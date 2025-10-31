@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dark Mode KJV Bible Reader</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1d24;
+            --secondary: #8e7d5b;
+            --accent: #c9a86a;
+            --light: #12141a;
+            --dark: #f5f5f5;
+            --text: #e0e0e0;
+            --text-light: #a0a0a0;
+            --border: #2a2e38;
+            --card-bg: #1f232b;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            background-color: var(--light);
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 280px;
+            background-color: var(--primary);
+            color: var(--text);
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+            position: fixed;
+            height: 100vh;
+            transition: transform 0.3s ease;
+            z-index: 100;
+            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .logo-icon {
+            font-size: 1.8rem;
+            margin-right: 0.75rem;
+            color: var(--accent);
+        }
+
+        .logo h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+        }
+
+        .testament {
+            margin-bottom: 1.5rem;
+        }
+
+        .testament h2 {
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        .books-list {
+            list-style: none;
+        }
+
+        .book-item {
+            padding: 0.5rem 0.75rem;
+            margin-bottom: 0.25rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 0.95rem;
+        }
+
+        .book-item:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .book-item.active {
+            background-color: var(--accent);
+            color: var(--primary);
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            margin-left: 280px;
+            padding: 2rem;
+            max-width: 900px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .book-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            color: var(--accent);
+        }
+
+        .chapter-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chapter-selector {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .chapter-selector select {
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            background-color: var(--card-bg);
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+        }
+
+        .nav-btn {
+            background: none;
+            border: 1px solid var(--border);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--text);
+        }
+
+        .nav-btn:hover {
+            background-color: var(--accent);
+            color: var(--primary);
+            border-color: var(--accent);
+        }
+
+        .chapter-content {
+            margin-top: 1.5rem;
+        }
+
+        .chapter-summary {
+            background-color: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--accent);
+        }
+
+        .summary-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+        }
+
+        .verses-container {
+            background-color: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .verse {
+            margin-bottom: 1.25rem;
+            padding-bottom: 1.25rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .verse:last-child {
+            margin-bottom: 0;
+            border-bottom: none;
+        }
+
+        .verse-number {
+            display: inline-block;
+            font-weight: 500;
+            color: var(--accent);
+            margin-right: 0.5rem;
+            min-width: 1.5rem;
+        }
+
+        .verse-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                padding: 1.5rem;
+            }
+
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                top: 1.5rem;
+                left: 1.5rem;
+            }
+
+            .book-title {
+                margin-top: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .chapter-nav {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-left-color: var(--accent);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        .theme-icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar with Bible Books -->
+        <aside class="sidebar" id="sidebar">
+            <div class="logo">
+                <span class="logo-icon">✝</span>
+                <h1>KJV Bible</h1>
+            </div>
+            
+            <div class="testament">
+                <h2>Old Testament</h2>
+                <ul class="books-list" id="old-testament-books">
+                    <!-- Old Testament books will be populated by JavaScript -->
+                </ul>
+            </div>
+            
+            <div class="testament">
+                <h2>New Testament</h2>
+                <ul class="books-list" id="new-testament-books">
+                    <!-- New Testament books will be populated by JavaScript -->
+                </ul>
+            </div>
+        </aside>
+        
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <button class="mobile-menu-btn" id="mobile-menu-btn">☰</button>
+            
+            <div class="header">
+                <h2 class="book-title" id="current-book">Genesis</h2>
+                <div class="chapter-nav">
+                    <button class="nav-btn" id="prev-chapter">←</button>
+                    <div class="chapter-selector">
+                        <span>Chapter</span>
+                        <select id="chapter-select">
+                            <!-- Chapters will be populated by JavaScript -->
+                        </select>
+                    </div>
+                    <button class="nav-btn" id="next-chapter">→</button>
+                </div>
+            </div>
+            
+            <div class="chapter-content">
+                <div class="chapter-summary">
+                    <h3 class="summary-title">Chapter Summary</h3>
+                    <p id="summary-text">Loading summary...</p>
+                </div>
+                
+                <div class="verses-container" id="verses-container">
+                    <div class="loading">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Theme Toggle Button -->
+        <div class="theme-toggle" id="theme-toggle">
+            <span class="theme-icon">☀️</span>
+        </div>
+    </div>
+
+    <script>
+        // Bible data structure
+        const bibleData = {
+            books: [
+                // Old Testament
+                { name: "Genesis", chapters: 50, testament: "old" },
+                { name: "Exodus", chapters: 40, testament: "old" },
+                { name: "Leviticus", chapters: 27, testament: "old" },
+                { name: "Numbers", chapters: 36, testament: "old" },
+                { name: "Deuteronomy", chapters: 34, testament: "old" },
+                { name: "Joshua", chapters: 24, testament: "old" },
+                { name: "Judges", chapters: 21, testament: "old" },
+                { name: "Ruth", chapters: 4, testament: "old" },
+                { name: "1 Samuel", chapters: 31, testament: "old" },
+                { name: "2 Samuel", chapters: 24, testament: "old" },
+                { name: "1 Kings", chapters: 22, testament: "old" },
+                { name: "2 Kings", chapters: 25, testament: "old" },
+                { name: "1 Chronicles", chapters: 29, testament: "old" },
+                { name: "2 Chronicles", chapters: 36, testament: "old" },
+                { name: "Ezra", chapters: 10, testament: "old" },
+                { name: "Nehemiah", chapters: 13, testament: "old" },
+                { name: "Esther", chapters: 10, testament: "old" },
+                { name: "Job", chapters: 42, testament: "old" },
+                { name: "Psalms", chapters: 150, testament: "old" },
+                { name: "Proverbs", chapters: 31, testament: "old" },
+                { name: "Ecclesiastes", chapters: 12, testament: "old" },
+                { name: "Song of Solomon", chapters: 8, testament: "old" },
+                { name: "Isaiah", chapters: 66, testament: "old" },
+                { name: "Jeremiah", chapters: 52, testament: "old" },
+                { name: "Lamentations", chapters: 5, testament: "old" },
+                { name: "Ezekiel", chapters: 48, testament: "old" },
+                { name: "Daniel", chapters: 12, testament: "old" },
+                { name: "Hosea", chapters: 14, testament: "old" },
+                { name: "Joel", chapters: 3, testament: "old" },
+                { name: "Amos", chapters: 9, testament: "old" },
+                { name: "Obadiah", chapters: 1, testament: "old" },
+                { name: "Jonah", chapters: 4, testament: "old" },
+                { name: "Micah", chapters: 7, testament: "old" },
+                { name: "Nahum", chapters: 3, testament: "old" },
+                { name: "Habakkuk", chapters: 3, testament: "old" },
+                { name: "Zephaniah", chapters: 3, testament: "old" },
+                { name: "Haggai", chapters: 2, testament: "old" },
+                { name: "Zechariah", chapters: 14, testament: "old" },
+                { name: "Malachi", chapters: 4, testament: "old" },
+                
+                // New Testament
+                { name: "Matthew", chapters: 28, testament: "new" },
+                { name: "Mark", chapters: 16, testament: "new" },
+                { name: "Luke", chapters: 24, testament: "new" },
+                { name: "John", chapters: 21, testament: "new" },
+                { name: "Acts", chapters: 28, testament: "new" },
+                { name: "Romans", chapters: 16, testament: "new" },
+                { name: "1 Corinthians", chapters: 16, testament: "new" },
+                { name: "2 Corinthians", chapters: 13, testament: "new" },
+                { name: "Galatians", chapters: 6, testament: "new" },
+                { name: "Ephesians", chapters: 6, testament: "new" },
+                { name: "Philippians", chapters: 4, testament: "new" },
+                { name: "Colossians", chapters: 4, testament: "new" },
+                { name: "1 Thessalonians", chapters: 5, testament: "new" },
+                { name: "2 Thessalonians", chapters: 3, testament: "new" },
+                { name: "1 Timothy", chapters: 6, testament: "new" },
+                { name: "2 Timothy", chapters: 4, testament: "new" },
+                { name: "Titus", chapters: 3, testament: "new" },
+                { name: "Philemon", chapters: 1, testament: "new" },
+                { name: "Hebrews", chapters: 13, testament: "new" },
+                { name: "James", chapters: 5, testament: "new" },
+                { name: "1 Peter", chapters: 5, testament: "new" },
+                { name: "2 Peter", chapters: 3, testament: "new" },
+                { name: "1 John", chapters: 5, testament: "new" },
+                { name: "2 John", chapters: 1, testament: "new" },
+                { name: "3 John", chapters: 1, testament: "new" },
+                { name: "Jude", chapters: 1, testament: "new" },
+                { name: "Revelation", chapters: 22, testament: "new" }
+            ]
+        };
+
+        // Sample chapter summaries (in a real app, these would come from a database)
+        const chapterSummaries = {
+            "Genesis 1": "The creation of the heavens and the earth, and all life within them. God creates light, separates waters, makes land and vegetation, creates the sun, moon, and stars, fills the waters and skies with living creatures, and creates mankind in His image.",
+            "Genesis 2": "God rests on the seventh day. The creation of Adam and Eve, the Garden of Eden, and the tree of knowledge of good and evil. God gives Adam dominion over the garden and creates Eve as his companion.",
+            "Genesis 3": "The fall of man. The serpent tempts Eve, who eats the forbidden fruit and gives some to Adam. Their eyes are opened, they realize their nakedness, and God pronounces judgments on the serpent, Eve, and Adam before banishing them from Eden.",
+            "John 1": "The divinity of Jesus Christ as the Word made flesh. John the Baptist testifies of Jesus as the Lamb of God. Jesus calls His first disciples and reveals His knowledge of Nathanael.",
+            "John 3": "Jesus teaches Nicodemus about being born again. John the Baptist testifies again about Jesus. Famous verse: 'For God so loved the world, that he gave his only begotten Son...'",
+            "Matthew 5": "The beginning of the Sermon on the Mount, including the Beatitudes. Jesus teaches about being salt and light, fulfilling the law, anger, adultery, divorce, oaths, and loving enemies."
+        };
+
+        // Sample verse data (in a real app, this would come from an API)
+        const sampleVerses = {
+            "Genesis 1": [
+                { number: 1, text: "In the beginning God created the heaven and the earth." },
+                { number: 2, text: "And the earth was without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon the face of the waters." },
+                { number: 3, text: "And God said, Let there be light: and there was light." },
+                { number: 4, text: "And God saw the light, that it was good: and God divided the light from the darkness." },
+                { number: 5, text: "And God called the light Day, and the darkness he called Night. And the evening and the morning were the first day." }
+            ],
+            "John 3": [
+                { number: 1, text: "There was a man of the Pharisees, named Nicodemus, a ruler of the Jews:" },
+                { number: 2, text: "The same came to Jesus by night, and said unto him, Rabbi, we know that thou art a teacher come from God: for no man can do these miracles that thou doest, except God be with him." },
+                { number: 3, text: "Jesus answered and said unto him, Verily, verily, I say unto thee, Except a man be born again, he cannot see the kingdom of God." },
+                { number: 4, text: "Nicodemus saith unto him, How can a man be born when he is old? can he enter the second time into his mother's womb, and be born?" },
+                { number: 5, text: "Jesus answered, Verily, verily, I say unto thee, Except a man be born of water and of the Spirit, he cannot enter into the kingdom of God." },
+                { number: 16, text: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life." }
+            ]
+        };
+
+        // Current state
+        let currentBook = "Genesis";
+        let currentChapter = 1;
+
+        // DOM elements
+        const oldTestamentBooks = document.getElementById('old-testament-books');
+        const newTestamentBooks = document.getElementById('new-testament-books');
+        const currentBookElement = document.getElementById('current-book');
+        const chapterSelect = document.getElementById('chapter-select');
+        const prevChapterBtn = document.getElementById('prev-chapter');
+        const nextChapterBtn = document.getElementById('next-chapter');
+        const summaryText = document.getElementById('summary-text');
+        const versesContainer = document.getElementById('verses-container');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = document.querySelector('.theme-icon');
+
+        // Initialize the page
+        function init() {
+            populateBookLists();
+            setupEventListeners();
+            loadBook(currentBook, currentChapter);
+        }
+
+        // Populate the book lists in the sidebar
+        function populateBookLists() {
+            bibleData.books.forEach(book => {
+                const listItem = document.createElement('li');
+                listItem.className = 'book-item';
+                listItem.textContent = book.name;
+                listItem.dataset.book = book.name;
+                
+                listItem.addEventListener('click', () => {
+                    loadBook(book.name, 1);
+                    // Close mobile menu if open
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+                
+                if (book.testament === 'old') {
+                    oldTestamentBooks.appendChild(listItem);
+                } else {
+                    newTestamentBooks.appendChild(listItem);
+                }
+            });
+        }
+
+        // Set up event listeners
+        function setupEventListeners() {
+            chapterSelect.addEventListener('change', (e) => {
+                currentChapter = parseInt(e.target.value);
+                loadBook(currentBook, currentChapter);
+            });
+            
+            prevChapterBtn.addEventListener('click', () => {
+                if (currentChapter > 1) {
+                    currentChapter--;
+                    chapterSelect.value = currentChapter;
+                    loadBook(currentBook, currentChapter);
+                }
+            });
+            
+            nextChapterBtn.addEventListener('click', () => {
+                const currentBookData = bibleData.books.find(book => book.name === currentBook);
+                if (currentChapter < currentBookData.chapters) {
+                    currentChapter++;
+                    chapterSelect.value = currentChapter;
+                    loadBook(currentBook, currentChapter);
+                }
+            });
+            
+            mobileMenuBtn.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+            
+            // Theme toggle functionality
+            themeToggle.addEventListener('click', toggleTheme);
+        }
+
+        // Toggle between dark and light mode
+        function toggleTheme() {
+            // This would toggle between dark and light mode
+            // For now, we'll just show an alert since we're already in dark mode
+            alert("You're already in dark mode! In a complete implementation, this would toggle to light mode.");
+        }
+
+        // Load a book and chapter
+        function loadBook(bookName, chapter) {
+            currentBook = bookName;
+            currentChapter = chapter;
+            
+            // Update UI
+            currentBookElement.textContent = bookName;
+            updateChapterSelector(bookName);
+            chapterSelect.value = chapter;
+            
+            // Update active book in sidebar
+            document.querySelectorAll('.book-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.dataset.book === bookName) {
+                    item.classList.add('active');
+                }
+            });
+            
+            // Load chapter content
+            loadChapterContent(bookName, chapter);
+        }
+
+        // Update the chapter selector based on the current book
+        function updateChapterSelector(bookName) {
+            const book = bibleData.books.find(b => b.name === bookName);
+            chapterSelect.innerHTML = '';
+            
+            for (let i = 1; i <= book.chapters; i++) {
+                const option = document.createElement('option');
+                option.value = i;
+                option.textContent = i;
+                chapterSelect.appendChild(option);
+            }
+        }
+
+        // Load chapter content (summary and verses)
+        function loadChapterContent(bookName, chapter) {
+            const chapterKey = `${bookName} ${chapter}`;
+            
+            // Show loading state
+            versesContainer.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            // Simulate API delay
+            setTimeout(() => {
+                // Update summary
+                summaryText.textContent = chapterSummaries[chapterKey] || `Summary for ${chapterKey} will be displayed here.`;
+                
+                // Update verses
+                displayVerses(bookName, chapter);
+            }, 500);
+        }
+
+        // Display verses for the current chapter
+        function displayVerses(bookName, chapter) {
+            const chapterKey = `${bookName} ${chapter}`;
+            const verses = sampleVerses[chapterKey] || [
+                { number: 1, text: `Sample verse from ${chapterKey}. In a real implementation, this would be fetched from a Bible API.` },
+                { number: 2, text: "The King James Version (KJV) is an English translation of the Christian Bible for the Church of England." },
+                { number: 3, text: "This elegant dark mode interface provides a comfortable reading experience while preserving the classic language of the KJV." }
+            ];
+            
+            let versesHTML = '';
+            verses.forEach(verse => {
+                versesHTML += `
+                    <div class="verse">
+                        <span class="verse-number">${verse.number}</span>
+                        <span class="verse-text">${verse.text}</span>
+                    </div>
+                `;
+            });
+            
+            versesContainer.innerHTML = versesHTML;
+        }
+
+        // Initialize the app when the page loads
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
