@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,12 +12,49 @@
             margin-top: 50px;
             background-color: #0c3c36;
         }
+
         h1 {
             color: #e6e3e3;
         }
+
+        nav {
+            background-color: rgba(19, 152, 89, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
     </style>
 </head>
+
 <body>
-    <h1>Coming Soon!</h1>
+    <header><img src="assets/banner.png" alt="SPC Banner"></header>
+    <h1>Welcome to Church of Christ Founded in Jerusalem New Testament San Pablo Local Church</h1>
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#member">Members</a></li>
+            <li><a href="#pastor">Pastors</a></li>
+            <li><a href="#deacon">Deacons</a></li>
+        </ul>
+    </nav>
 </body>
+
 </html>
