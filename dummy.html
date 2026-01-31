@@ -1,267 +1,275 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CCFJNT</title>
-    <link rel="icon" type="image/x-icon" href="./assets/CCFJNT.png" />
-    <link rel="stylesheet" href="./assets/index.css" />
-  </head>
 
-  <body>
-    <!-- Animated Background -->
-    <canvas id="bg-animation"></canvas>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CCFJNT</title>
+  <link rel="icon" type="image/x-icon" href="./assets/CCFJNT.png" />
+  <link rel="stylesheet" href="./assets/index.css" />
+</head>
 
-    <!-- Homepage -->
-    <header>
-      <div class="container">
-        <div class="logo">
-          Church of Christ Founded in Jerusalem New Testament
-        </div>
-        <div class="verse">"Mamalagi nawa ang pagibig sa mga kapatid." - Hebreo 13:1</div>
-        <h1>Welcome to Our Family</h1>
-        <p>Join us for worship & community every Sunday at 09:00 AM</p>
-        <nav>
-          <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#location">Location</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </nav>
+<body>
+  <!-- Animated Background -->
+  <canvas id="bg-animation"></canvas>
+
+  <!-- Homepage -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        Church of Christ Founded in Jerusalem New Testament
       </div>
-    </header>
-    <!-- 2. About Section -->
-    <section id="about">
-      <h2 class="serv">About Us</h2>
-      <p>Coming Soon...</p>
-
-      <div style="display: flex; margin-top: 30px; gap: 30px">
-        <img
-          src="https://example.com/pastor-photo.jpg"
-          alt="Pastor Photo"
-          style="width: 200px; border-radius: 50%"
-        />
-        <div>
-          <h3>Pastor</h3>
-          <p>
-            "We're not just a church - we're a family. Come join us as we grow
-            together in faith and love."
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3. Services Section -->
-    <section id="services">
-      <h2 class="serv">Our Services</h2>
-      <p>
-        All services are held at 376R+HRH Belen compound, San Pablo City, Laguna
-        Dress comfortably!
-      </p>
-    </section>
-
-    <!-- Popup Image Modal -->
-    <div id="imgModal" class="modal">
-      <span class="close">&times;</span>
-      <img class="modal-content" id="modalImg" />
+      <div class="verse">"Mamalagi nawa ang pagibig sa mga kapatid." - Hebreo 13:1</div>
+      <h1>Welcome to Our Family</h1>
+      <p>Join us for worship & community every Sunday at 09:00 AM</p>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#location">Location</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
+  </header>
+  <!-- 2. About Section -->
+  <section id="about">
+    <h2 class="serv">About Us</h2>
+    <p>Coming Soon...</p>
 
-    <!-- 4. Photo Gallery -->
-    <section>
-      <h2>Our Community</h2>
-      <div class="gallery">
-        <img src="./assets/inspirational.png" alt="Worship" />
-        <img src="./assets/cya.png" alt="Youth Group" />
-        <img src="./assets/pstr cauguiran.png" alt="Pastor with Congregation" />
-        <img src="./assets/Pastors deacons.png" alt="Deacons and Elders" />
+    <div style="display: flex; margin-top: 30px; gap: 30px">
+      <img src="https://example.com/pastor-photo.jpg" alt="Pastor Photo" style="width: 200px; border-radius: 50%" />
+      <div>
+        <h3>Pastor</h3>
+        <p>
+          "We're not just a church - we're a family. Come join us as we grow
+          together in faith and love."
+        </p>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- 5. Locals -->
-    <section>
-      <h2>Our Locals</h2>
-      <div class="gallery">
-        <img src="assets/CCFJNT new.png" alt="Apia Local Church" />
-        <img src="assets/CCFJNT new.png" alt="Calawis Local Church" />
-        <img src="assets/CCFJNT new.png" alt="Cupang Local Church" />
-        <img src="assets/CCFJNT new.png" alt="Ipo Local Church" />
-        <img src="assets/CCFJNT new.png" alt="Malanday Local Church" />
-        <img src="assets/CCFJNT new.png" alt="San Pablo Local Church" />
-        <img src="assets/CCFJNT new.png" alt="San Rafael Local Church" />
-      </div>
-    </section>
+  <!-- 3. Services Section -->
+  <section id="services">
+    <h2 class="serv">Our Services</h2>
+    <p>
+      All services are held at 376R+HRH Belen compound, San Pablo City, Laguna
+      Dress comfortably!
+    </p>
+  </section>
 
-    <!-- 6. Location Section -->
-    <section id="location">
-      <h2 class="serv">Visit Us</h2>
-      <p>
-        <strong>Address:</strong> 376R+HRH Belen compound, San Pablo City,
-        Laguna
-      </p>
-      <div style="height: 300px">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.2811561658814!2d121.28871347406995!3d14.060567790072014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd430079ac3101%3A0x820d6212e9de891a!2sChurch%20of%20Christ%20Founded%20In%20Jerusalem%20New%20Testament%20Local%20Of%20San%20Pablo!5e0!3m2!1sen!2sph!4v1763300627298!5m2!1sen!2sph"
-          width="100%"
-          height="100%"
-          style="border: 0"
-          allowfullscreen=""
-          loading="lazy"
-        ></iframe>
-      </div>
-      <p><strong>Service Times:</strong> Sunday 09:00 AM | Thursday 5:00 PM</p>
-    </section>
+  <!-- Popup Image Modal -->
+  <div id="imgModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="modalImg" />
+  </div>
 
-    <!-- 7. Contact Section -->
-    <section id="contact">
-      <h2 class="serv">Contact Us</h2>
-      <!--<form class="contact-form">
+  <!-- 4. Photo Gallery -->
+  <section>
+    <h2>Our Community</h2>
+    <div class="gallery">
+      <img src="./assets/inspirational.png" alt="Worship" />
+      <img src="./assets/cya.png" alt="Youth Group" />
+      <img src="./assets/pstr cauguiran.png" alt="Pastor with Congregation" />
+      <img src="./assets/Pastors deacons.png" alt="Deacons and Elders" />
+    </div>
+  </section>
+
+  <!-- 5. Locals -->
+  <h2>Our Locals</h2>
+  <div class="gallery">
+    <a class="lBtn" href="apia.html">
+      Apia Local Church
+      <img src="assets/CCFJNT new.png" alt="Apia Local Church">
+    </a>
+
+    <a class="lBtn" href="calawis.html">
+      Calawis Local Church
+      <img src="assets/CCFJNT new.png" alt="Calawis Local Church">
+    </a>
+
+    <a class="lBtn" href="cupang.html">
+      Cupang Local Church
+      <img src="assets/CCFJNT new.png" alt="Cupang Local Church">
+    </a>
+
+    <a class="lBtn" href="ipo.html">
+      Ipo Local Church
+      <img src="assets/CCFJNT new.png" alt="Ipo Local Church">
+    </a>
+
+    <a class="lBtn" href="malanday.html">
+      Malanday Local Church
+      <img src="assets/CCFJNT new.png" alt="Malanday Local Church">
+    </a>
+
+    <a class="lBtn" href="spc.html">
+      San Pablo Local Church
+      <img src="assets/CCFJNT new.png" alt="San Pablo Local Church">
+    </a>
+
+    <a class="lBtn" href="sanrafael.html">
+      San Rafael Local Church
+      <img src="assets/CCFJNT new.png" alt="San Rafael Local Church">
+    </a>
+  </div>
+  </section>
+
+  <!-- 6. Location Section -->
+  <section id="location">
+    <h2 class="serv">Visit Us</h2>
+    <p>
+      <strong>Address:</strong> 376R+HRH Belen compound, San Pablo City,
+      Laguna
+    </p>
+    <div style="height: 300px">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.2811561658814!2d121.28871347406995!3d14.060567790072014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd430079ac3101%3A0x820d6212e9de891a!2sChurch%20of%20Christ%20Founded%20In%20Jerusalem%20New%20Testament%20Local%20Of%20San%20Pablo!5e0!3m2!1sen!2sph!4v1763300627298!5m2!1sen!2sph"
+        width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+    <p><strong>Service Times:</strong> Sunday 09:00 AM | Thursday 5:00 PM</p>
+  </section>
+
+  <!-- 7. Contact Section -->
+  <section id="contact">
+    <h2 class="serv">Contact Us</h2>
+    <!--<form class="contact-form">
         <input type="text" placeholder="Your Name" required />
         <input type="email" placeholder="Your Email" required />
         <textarea placeholder="Your Message" rows="5" required></textarea>
         <button type="submit">Send Message</button>
       </form>-->
-      <div style="text-align: center; margin-top: 30px">
-        <p>Call us: +63 928 408 8658</p>
-        <p>
-          Follow us on
-          <a href="https://www.facebook.com/CCFJNT"
-            >CCFJNT Facebook Official Page</a
-          >
-          <br />
-          <a href="https://www.facebook.com/profile.php?id=61555122296163"
-            >CCFJNT Facebook of San Pablo Local</a
-          >
-          <br />
-          <a
-            href="http://facebook.com/groups/159279404214927/user/100074538504936"
-            >CCFJNT Facebook of Ipo local</a
-          >
-          <br />
-          <a href="https://www.facebook.com/groups/155999007822529"
-            >CCFJNT Malanday Official Facebook Group</a
-          >
-          <br />
-          <a href="https://www.facebook.com/profile.php?id=61570964192027"
-            >CCFJNT San Rafael Official Facebook Page</a
-          >
-          <br />
-        </p>
-      </div>
-    </section>
-
-    <!-- Bible Verse of the Week -->
-    <div class="bible-verse">
-      <h3>Bible Verse of the Week</h3>
+    <div style="text-align: center; margin-top: 30px">
+      <p>Call us: +63 928 408 8658</p>
       <p>
-        "5. Tumiwala ka sa Panginoon ng buong puso mo, at huwag kang manalig sa
-        iyong sariling kaunawaan: 6. Kilalanin mo siya sa lahat ng iyong mga
-        lakad, at kaniyang ituturo ang iyong mga landas." - Kawikaan 3:5-6
+        Follow us on
+        <a href="https://www.facebook.com/CCFJNT">CCFJNT Facebook Official Page</a>
+        <br />
+        <a href="https://www.facebook.com/profile.php?id=61555122296163">CCFJNT Facebook of San Pablo Local</a>
+        <br />
+        <a href="http://facebook.com/groups/159279404214927/user/100074538504936">CCFJNT Facebook of Ipo local</a>
+        <br />
+        <a href="https://www.facebook.com/groups/155999007822529">CCFJNT Malanday Official Facebook Group</a>
+        <br />
+        <a href="https://www.facebook.com/profile.php?id=61570964192027">CCFJNT San Rafael Official Facebook Page</a>
+        <br />
       </p>
     </div>
-    <footer>
-      <p>
-        &copy; 2023 Church of Christ Founded in Jerusalem | All Rights Reserved
-        | <a href="fea2127.github.io">Alfea</a>
-      </p>
-    </footer>
+  </section>
 
-    <!-- Three.js -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-    <script>
-      // Image Popup Script
-      const modal = document.getElementById("imgModal");
-      const modalImg = document.getElementById("modalImg");
-      const closeBtn = document.querySelector(".modal .close");
+  <!-- Bible Verse of the Week -->
+  <div class="bible-verse">
+    <h3>Bible Verse of the Week</h3>
+    <p>
+      "5. Tumiwala ka sa Panginoon ng buong puso mo, at huwag kang manalig sa
+      iyong sariling kaunawaan: 6. Kilalanin mo siya sa lahat ng iyong mga
+      lakad, at kaniyang ituturo ang iyong mga landas." - Kawikaan 3:5-6
+    </p>
+  </div>
+  <footer>
+    <p>
+      &copy; 2023 Church of Christ Founded in Jerusalem | All Rights Reserved
+      | <a href="fea2127.github.io">Alfea</a>
+    </p>
+  </footer>
 
-      // Select all gallery images
-      document.querySelectorAll(".gallery img").forEach((img) => {
-        img.addEventListener("click", () => {
-          modal.style.display = "flex";
-          modalImg.src = img.src;
-        });
+  <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script>
+    // Image Popup Script
+    const modal = document.getElementById("imgModal");
+    const modalImg = document.getElementById("modalImg");
+    const closeBtn = document.querySelector(".modal .close");
+
+    // Select all gallery images
+    document.querySelectorAll(".gallery img").forEach((img) => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
       });
+    });
 
-      // Close modal
-      closeBtn.onclick = () => (modal.style.display = "none");
-      modal.onclick = (e) => {
-        if (e.target === modal) modal.style.display = "none";
-      };
-    </script>
-    <script>
-      // Scene Setup
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        window.innerWidth / window.innerHeight,
-        0.1,
-        1000,
-      );
-      const renderer = new THREE.WebGLRenderer({
-        canvas: document.getElementById("bg-animation"),
-        antialias: true,
+    // Close modal
+    closeBtn.onclick = () => (modal.style.display = "none");
+    modal.onclick = (e) => {
+      if (e.target === modal) modal.style.display = "none";
+    };
+  </script>
+  <script>
+    // Scene Setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById("bg-animation"),
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Particle layers
+    function createParticles(count, color, size, opacity) {
+      const geo = new THREE.BufferGeometry();
+      const pos = [];
+      for (let i = 0; i < count; i++) {
+        pos.push((Math.random() - 0.5) * 100);
+        pos.push((Math.random() - 0.5) * 100);
+        pos.push((Math.random() - 0.5) * 100);
+      }
+      geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+      const mat = new THREE.PointsMaterial({
+        color,
+        size,
+        transparent: true,
+        opacity,
       });
+      return new THREE.Points(geo, mat);
+    }
+
+    const smallPoints = createParticles(1200, 0xd7bb5e, 0.05, 0.9); // gold
+    const largePoints = createParticles(200, 0xffffff, 0.2, 0.3); // white glow
+    scene.add(smallPoints);
+    scene.add(largePoints);
+
+    camera.position.z = 10;
+
+    // Mouse interaction
+    let mouseX = 0,
+      mouseY = 0;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+
+      smallPoints.rotation.y += 0.0008;
+      smallPoints.rotation.x += 0.0003;
+
+      largePoints.rotation.y -= 0.0005;
+
+      // Parallax shift
+      scene.rotation.y = mouseX * 0.1;
+      scene.rotation.x = mouseY * 0.1;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Resize
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
       renderer.setSize(window.innerWidth, window.innerHeight);
-      renderer.setPixelRatio(window.devicePixelRatio);
+    });
+  </script>
+</body>
 
-      // Particle layers
-      function createParticles(count, color, size, opacity) {
-        const geo = new THREE.BufferGeometry();
-        const pos = [];
-        for (let i = 0; i < count; i++) {
-          pos.push((Math.random() - 0.5) * 100);
-          pos.push((Math.random() - 0.5) * 100);
-          pos.push((Math.random() - 0.5) * 100);
-        }
-        geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
-        const mat = new THREE.PointsMaterial({
-          color,
-          size,
-          transparent: true,
-          opacity,
-        });
-        return new THREE.Points(geo, mat);
-      }
-
-      const smallPoints = createParticles(1200, 0xd7bb5e, 0.05, 0.9); // gold
-      const largePoints = createParticles(200, 0xffffff, 0.2, 0.3); // white glow
-      scene.add(smallPoints);
-      scene.add(largePoints);
-
-      camera.position.z = 10;
-
-      // Mouse interaction
-      let mouseX = 0,
-        mouseY = 0;
-      document.addEventListener("mousemove", (e) => {
-        mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-        mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
-      });
-
-      // Animate
-      function animate() {
-        requestAnimationFrame(animate);
-
-        smallPoints.rotation.y += 0.0008;
-        smallPoints.rotation.x += 0.0003;
-
-        largePoints.rotation.y -= 0.0005;
-
-        // Parallax shift
-        scene.rotation.y = mouseX * 0.1;
-        scene.rotation.x = mouseY * 0.1;
-
-        renderer.render(scene, camera);
-      }
-      animate();
-
-      // Resize
-      window.addEventListener("resize", () => {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-      });
-    </script>
-  </body>
 </html>
