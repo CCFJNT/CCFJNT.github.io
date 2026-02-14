@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CYA - SPC Local Church</title>
+    <link rel="icon" type="image/x-icon" href="./assets/CCFJNT.png" />
+  <link rel="stylesheet" href="./assets/index.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2, p {
+            color: #f0e8e8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+  <canvas id="bg-animation"></canvas>
+    <h1>Christian Youth Association of San Pablo Local Church</h1>
+    <br>
+    <p>Back to Homepage: <a href="index.html">CCFJNT</a></p>
+    <hr>
+    <section>
+    <h2>Chairman: Paul Edward Mingua</h2>
+    <p>SPC CYA Short Movie Presentation</p>
+    <iframe src="https://drive.google.com/file/d/1RHgEuFzRDkCIZpej6Q_p9zL5WkzI1cy0/preview" width="640" height="480"></iframe>
+    <p>Peanut Butter Fund Raising</p>
+    <p>CYA Cell Group</p>
+    <br>
+    <hr>
+    <h2>Chairman: Ralph Ryan Espinile</h2>
+    <hr>
+    <h2>Chairman: Ryan Valencia</h2>
+    <hr>
+    <h3>CYA - Sunday School Palma 1 kids</h3>
+    </section>
+     <!-- JS -->
+   <!-- Three.js -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script>
+    // Scene Setup
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000,
+    );
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById("bg-animation"),
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+
+    // Particle layers
+    function createParticles(count, color, size, opacity) {
+      const geo = new THREE.BufferGeometry();
+      const pos = [];
+      for (let i = 0; i < count; i++) {
+        pos.push((Math.random() - 0.5) * 100);
+        pos.push((Math.random() - 0.5) * 100);
+        pos.push((Math.random() - 0.5) * 100);
+      }
+      geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
+      const mat = new THREE.PointsMaterial({
+        color,
+        size,
+        transparent: true,
+        opacity,
+      });
+      return new THREE.Points(geo, mat);
+    }
+
+    const smallPoints = createParticles(1200, 0xd7bb5e, 0.05, 0.9); // gold
+    const largePoints = createParticles(200, 0xffffff, 0.2, 0.3); // white glow
+    scene.add(smallPoints);
+    scene.add(largePoints);
+
+    camera.position.z = 10;
+
+    // Mouse interaction
+    let mouseX = 0,
+      mouseY = 0;
+    document.addEventListener("mousemove", (e) => {
+      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
+      mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    // Animate
+    function animate() {
+      requestAnimationFrame(animate);
+
+      smallPoints.rotation.y += 0.0008;
+      smallPoints.rotation.x += 0.0003;
+
+      largePoints.rotation.y -= 0.0005;
+
+      // Parallax shift
+      scene.rotation.y = mouseX * 0.1;
+      scene.rotation.x = mouseY * 0.1;
+
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Resize
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+  </script>
+</body>
+</html>
