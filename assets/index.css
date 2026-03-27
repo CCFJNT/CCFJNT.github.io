@@ -10,6 +10,7 @@ body {
   color: #333;
   line-height: 1.6;
   background: #000; /* fallback if canvas fails */
+  margin: auto;
 }
 
 #bg-animation {
