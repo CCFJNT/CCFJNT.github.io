@@ -200,8 +200,11 @@ footer {
 .close:hover {
   color: #d7bb5e;
 }
- /* visitorcount */
-      #visitorcount {
-        padding: 50px;
-        margin: auto;
-      }
+/* visitorcount */
+#visitorcount {
+  padding: 50px;
+  display: flex;
+  justify-content: center; 
+  align-items: center;      
+  text-align: center;
+}
