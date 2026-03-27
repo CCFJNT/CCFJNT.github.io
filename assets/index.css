@@ -199,3 +199,8 @@ footer {
 .close:hover {
   color: #d7bb5e;
 }
+ /* visitorcount */
+      #visitorcount {
+        padding: 50px;
+        margin: auto;
+      }
