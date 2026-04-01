@@ -1,109 +1,175 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CCFJNT SPC</title>
     <link rel="icon" type="image/x-icon" href="./assets/CCFJNT.png" />
     <style>
-        body {
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #0c3c36;
-            color: #e6e3e3;
-        }
+      body {
+        font-family:
+          Cambria, Cochin, Georgia, Times, "Times New Roman", serif, sans-serif;
+        text-align: center;
+        margin-top: 50px;
+        background-color: #0c3c36;
+        color: #e6e3e3;
+      }
 
-        h1 {
-            color: #e6e3e3;
-        }
+      h1 {
+        color: #e6e3e3;
+      }
 
-        nav {
-            background-color: rgba(19, 152, 89, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-        }
+      nav {
+        background-color: rgba(19, 152, 89, 0.8);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 15px 0;
+        position: sticky;
+        top: 0;
+      }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-            list-style: none;
-        }
+      nav ul {
+        display: flex;
+        justify-content: center;
+        list-style: none;
+      }
 
-        nav ul li {
-            margin: 0 20px;
-        }
+      nav ul li {
+        margin: 0 20px;
+      }
 
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: bold;
-        }
+      nav ul li a {
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      /* additional */
+      section {
+        display: none; /* hide all sections */
+      }
+
+      section.active {
+        display: block; /* show selected section */
+      }
     </style>
-</head>
+  </head>
 
-<body>
-    <header><img src="assets/banner.png" alt="SPC Banner"></header>
-    <h1>Welcome to Church of Christ Founded in Jerusalem New Testament San Pablo Local Church</h1>
+  <body>
+    <header><img src="assets/banner.png" alt="SPC Banner" /></header>
+    <h1>
+      Welcome to Church of Christ Founded in Jerusalem New Testament San Pablo
+      Local Church
+    </h1>
     <nav>
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#member">Members</a></li>
-            <li><a href="#pastor">Pastors</a></li>
-            <li><a href="#deacon">Deacons</a></li>
-            <li><a href="#cya">CYAs</a></li>
-        </ul>
+      <ul>
+        <li><a href="#" onclick="showSection('about')">About</a></li>
+        <li><a href="#" onclick="showSection('member')">Members</a></li>
+        <li><a href="#" onclick="showSection('pastor')">Pastors</a></li>
+        <li><a href="#" onclick="showSection('deacon')">Deacons</a></li>
+        <li><a href="#" onclick="showSection('cya')">CYAs</a></li>
+      </ul>
     </nav>
-    <br>
+    <br />
     <section id="about">
-        <img src="assets/CCFJNT.png" alt="Logo">
-        <h2>About SPC</h2>
-        <p>Church of Christ Founded in Jerusalem New Testament San Pablo Local Church (CCFJNT SPC) is a local
-            congregation of the Church of Christ Founded in Jerusalem New Testament (CCFJNT). Our mission is to spread
-            the teachings of Jesus Christ and serve our community with love and compassion. CCFJNT SPC was established in
-            San Pablo City to cater to the spiritual needs of the local community. Over the years, we have grown in
-            faith and numbers, becoming a beacon of hope and faith in the area.</p>
-        <br>
-        <h2>Church Location History</h2>
-        <li>San Gregorio San Pablo City- Cauguiran Residence</li>
-        <li>Poblacion 4 Alaminos Laguna - Mingua Residence</li>
-        <li>San Gabriel "Makokak" San Pablo City - Cauguiran Residence</li>
-        <li>Guadalupe 2 "Kaliwa Triangulo" San Pablo City - Boone Residence</li>
-        <li>San Miguel Alaminos Laguna - Biral Residence</li>
-        <li>Del Remedio San Pablo City - Cauguiran Residence</li>
-        <li>San Francisco "D.I. Calihan" San Pablo City - Catapang Residence</li>
-        <li>Palma I Alaminos Laguna - Delos Reyes Residence</li>
-        <li>San Miguel Alaminos Laguna - Mingua Residence</li>
-        <li>San Nicolas San Pablo City - Current Church Building</li>
-        <br>
-        <h2>Images of Church Temporary Location</h2>
-        <img src="" alt="">
+      <img src="assets/CCFJNT.png" alt="Logo" />
+      <h2>About SPC</h2>
+      <p>
+        Church of Christ Founded in Jerusalem New Testament San Pablo Local
+        Church (CCFJNT SPC) is a local congregation of the Church of Christ
+        Founded in Jerusalem New Testament (CCFJNT). Our mission is to spread
+        the teachings of Jesus Christ and serve our community with love and
+        compassion. CCFJNT SPC was established in San Pablo City to cater to the
+        spiritual needs of the local community. Over the years, we have grown in
+        faith and numbers, becoming a beacon of hope and faith in the area.
+      </p>
+      <hr />
+      <br />
+      <h2>Church Activities</h2>
+      <ol>
+        <li>Weekly Bible Study - Every Thursday at 5:00 PM</li>
+        <li>Prayer Meetings - Quarterly - Thursday at 5:00 PM</li>
+        <li>Memory Verse every Sunday and Thursday</li>
+        <li>Youth Fellowship Events</li>
+      </ol>
+      <hr />
+      <br />
+      <h2>Church Location History</h2>
+      <li>San Gregorio San Pablo City- Cauguiran Residence</li>
+      <li>Poblacion 4 Alaminos Laguna - Mingua Residence</li>
+      <li>San Gabriel "Makokak" San Pablo City - Cauguiran Residence</li>
+      <li>Guadalupe 2 "Kaliwa Triangulo" San Pablo City - Boone Residence</li>
+      <li>San Miguel Alaminos Laguna - Biral Residence</li>
+      <li>Del Remedio San Pablo City - Cauguiran Residence</li>
+      <li>San Francisco "D.I. Calihan" San Pablo City - Catapang Residence</li>
+      <li>Palma I Alaminos Laguna - Delos Reyes Residence</li>
+      <li>San Miguel Alaminos Laguna - Mingua Residence</li>
+      <li>San Nicolas San Pablo City - Current Church Building</li>
+      <hr />
+      <br />
+      <h2>Images of Church Temporary Location</h2>
+      <img src="" alt="" />
     </section>
-    <br>
+    <hr />
+    <br />
     <section id="member">
-        <h2>Members</h2>
-        <p>Our church is proud to have a diverse and growing community of members who are committed to living out the teachings of Christ. We welcome all who seek spiritual growth and fellowship.</p>
+      <h2>Members</h2>
+      <p>
+        Our church is proud to have a diverse and growing community of members
+        who are committed to living out the teachings of Christ. We welcome all
+        who seek spiritual growth and fellowship.
+      </p>
     </section>
-    <br>
-    <section id="pastor">     
-        <h2>Pastors</h2>
-        <p>Our pastors are dedicated to guiding our congregation in faith and service. They provide spiritual leadership, counseling, and support to our members.</p>
+    <hr />
+    <br />
+    <section id="pastor">
+      <h2>Pastors</h2>
+      <p>
+        Our pastors are dedicated to guiding our congregation in faith and
+        service. They provide spiritual leadership, counseling, and support to
+        our members.
+      </p>
     </section>
-    <br>
+    <hr />
+    <br />
     <section id="deacon">
-        <h2>Deacons</h2>
-        <p>Our deacons play a vital role in the ministry of our church, assisting in various capacities to ensure the smooth operation of our services.</p>
+      <h2>Deacons</h2>
+      <p>
+        Our deacons play a vital role in the ministry of our church, assisting
+        in various capacities to ensure the smooth operation of our services.
+      </p>
     </section>
-    <br>
+    <hr />
+    <br />
     <section id="cya">
-        <h2>Christian Youth Action (CYA)</h2>
-        <p>The Christian Youth Action (CYA) is a vibrant ministry within our church that focuses on nurturing the spiritual growth and leadership skills of our youth. Through various activities, events, and service projects, CYA provides a supportive environment for young members to develop their faith and make a positive impact in their communities. There is <a href="CYAspc.html">dedicated page for CYA Chairman.</a></p>
+      <h2>Christian Youth Action (CYA)</h2>
+      <p>
+        The Christian Youth Action (CYA) is a vibrant ministry within our church
+        that focuses on nurturing the spiritual growth and leadership skills of
+        our youth. Through various activities, events, and service projects, CYA
+        provides a supportive environment for young members to develop their
+        faith and make a positive impact in their communities. There is
+        <a href="CYAspc.html">dedicated page for CYA Chairman.</a>
+      </p>
     </section>
-     <!-- JS -->
-</body>
+    <!-- JS -->
+    <script>
+      function showSection(sectionId) {
+        // get all sections
+        const sections = document.querySelectorAll("section");
 
+        // hide all
+        sections.forEach((section) => {
+          section.classList.remove("active");
+        });
+
+        // show selected
+        document.getElementById(sectionId).classList.add("active");
+      }
+
+      // Optional: show "about" by default
+      document.addEventListener("DOMContentLoaded", () => {
+        showSection("about");
+      });
+    </script>
+  </body>
 </html>
