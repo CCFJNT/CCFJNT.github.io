@@ -1,307 +1,336 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CCFJNT</title>
-  <link rel="icon" type="image/x-icon" href="./assets/CCFJNT.png" />
-  <link rel="stylesheet" href="./assets/index.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CCFJNT | Green & Gold Theme</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f3ea;  /* soft warm off-white to complement gold */
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+
+        .flyer {
+            max-width: 1100px;
+            width: 100%;
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+            transition: all 0.2s ease;
+        }
+
+        /* Green & Gold color scheme */
+        :root {
+            --cc-green: #0c3c36;
+            --cc-gold: #D4AF37;
+            --cc-gold-light: #f3e5ab;
+            --cc-green-soft: #e0f0ed;
+        }
+
+        /* Header section */
+        .hero {
+            background: var(--cc-green);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+            border-bottom: 6px solid var(--cc-gold);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            letter-spacing: -0.5px;
+            font-weight: 700;
+        }
+
+        .hero h1 span {
+            color: var(--cc-gold);
+        }
+
+        .tagline {
+            font-size: 1.25rem;
+            margin-top: 0.5rem;
+            opacity: 0.9;
+            font-weight: 400;
+        }
+
+        .button-group {
+            margin-top: 1.8rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.7rem 1.8rem;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .btn-outline {
+            border: 2px solid var(--cc-gold);
+            background: transparent;
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: var(--cc-gold);
+            color: var(--cc-green);
+            border-color: var(--cc-gold);
+        }
+
+        .btn-solid {
+            background: var(--cc-gold);
+            color: var(--cc-green);
+            border: 2px solid var(--cc-gold);
+        }
+
+        .btn-solid:hover {
+            background: #c5a028;
+            border-color: #c5a028;
+            color: #0a2e29;
+        }
+
+        /* Main content */
+        .content {
+            padding: 2rem 2.5rem;
+        }
+
+        .welcome-section {
+            background: var(--cc-green-soft);
+            padding: 1.8rem;
+            border-radius: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 8px solid var(--cc-gold);
+        }
+
+        .welcome-section h2 {
+            color: var(--cc-green);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .welcome-section p {
+            color: #1e2a28;
+            line-height: 1.5;
+        }
+
+        .grid-2col {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-bottom: 2.5rem;
+        }
+
+        .mission-card, .times-card {
+            flex: 1;
+            background: #fefcf5;
+            padding: 1.5rem;
+            border-radius: 1.25rem;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.05);
+            border: 1px solid #ece3cf;
+        }
+
+        .mission-card h3, .times-card h3 {
+            color: var(--cc-green);
+            font-size: 1.6rem;
+            border-left: 5px solid var(--cc-gold);
+            padding-left: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-item {
+            margin: 1rem 0;
+        }
+
+        .service-day {
+            font-weight: 700;
+            color: var(--cc-green);
+            font-size: 1.2rem;
+        }
+
+        .service-time {
+            color: #5e5a46;
+            font-weight: 500;
+        }
+
+        .plan-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            background: var(--cc-green);
+            color: white;
+            padding: 0.5rem 1.2rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .plan-btn:hover {
+            background: var(--cc-gold);
+            color: var(--cc-green);
+        }
+
+        /* ministries */
+        .ministries-title {
+            font-size: 1.8rem;
+            color: var(--cc-green);
+            margin: 2rem 0 1rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .ministries-title:after {
+            content: "";
+            display: block;
+            width: 70px;
+            height: 3px;
+            background: var(--cc-gold);
+            margin: 0.5rem auto 0;
+        }
+
+        .ministries-grid {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .ministry-card {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+            border: 1px solid #e9e0c7;
+            transition: transform 0.2s;
+        }
+
+        .ministry-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cc-gold);
+        }
+
+        .ministry-card h4 {
+            font-size: 1.4rem;
+            color: var(--cc-green);
+            margin-bottom: 0.5rem;
+        }
+
+        .ministry-card p {
+            color: #4a4a3a;
+            margin-bottom: 1rem;
+        }
+
+        .ministry-link {
+            color: var(--cc-gold);
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 1px dashed var(--cc-gold);
+        }
+
+        .ministry-link:hover {
+            color: var(--cc-green);
+            border-bottom-style: solid;
+        }
+
+        footer {
+            background: var(--cc-green);
+            color: #ddddbb;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.85rem;
+            margin-top: 1rem;
+        }
+
+        footer a {
+            color: var(--cc-gold);
+            text-decoration: none;
+        }
+
+        @media (max-width: 700px) {
+            .content {
+                padding: 1.5rem;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
 </head>
-
 <body>
-  <!-- Animated Background -->
-  <canvas id="bg-animation"></canvas>
+    <div class="flyer">
+        <div class="hero">
+            <h1>CCFJNT <span>✦</span></h1>
+            <div class="tagline">Growing together in faith, love, and purpose.</div>
+            <div class="button-group">
+                <a href="#" class="btn btn-outline">Learn More</a>
+                <a href="#" class="btn btn-solid">Join Us</a>
+            </div>
+        </div>
 
-  <!-- Homepage -->
-  <header>
-    <div class="container">
-      <div class="logo">
-        Church of Christ Founded in Jerusalem New Testament
-      </div>
-      <div class="verse">"Mamalagi nawa ang pagibig sa mga kapatid." - Hebreo 13:1</div>
-      <h1>Welcome to Our Family</h1>
-      <p>Join us for worship & community every Sunday at 09:00 AM</p>
-      <nav>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#location">Location</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
+        <div class="content">
+            <div class="welcome-section">
+                <h2>Welcome to Calvary Christian Fellowship JNT</h2>
+                <p>To spread the love and teachings of Jesus Christ, build a community of believers, and serve those in need. We enclose you to retorture your lain in docs, and mission.</p>
+                <!-- note: original text preserved as requested -->
+            </div>
+
+            <div class="grid-2col">
+                <div class="mission-card">
+                    <h3>Our Mission</h3>
+                    <p>To spread the love and teachings of Jesus Christ, build a community of believers, and serve those in need.</p>
+                </div>
+                <div class="times-card">
+                    <h3>Service Times</h3>
+                    <div class="service-item">
+                        <div class="service-day">Sunday Service</div>
+                        <div class="service-time">10:00 AM</div>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-day">Wednesday Prayer Meeting</div>
+                        <div class="service-time">7:00 PM</div>
+                    </div>
+                    <a href="#" class="plan-btn">Plan a Visit</a>
+                </div>
+            </div>
+
+            <div class="ministries-title">Our Ministries</div>
+            <div class="ministries-grid">
+                <div class="ministry-card">
+                    <h4>Youth Ministry</h4>
+                    <p>Empowering the next generation.</p>
+                    <a href="#" class="ministry-link">Learn More →</a>
+                </div>
+                <div class="ministry-card">
+                    <h4>Worship Team</h4>
+                    <p>Leading hearts into God’s presence.</p>
+                    <a href="#" class="ministry-link">Get Involved →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            © CCFJNT — Growing in faith, love & purpose · <a href="#">Contact</a>
+        </footer>
     </div>
-  </header>
-  <!-- 2. About Section -->
-  <section id="about">
-    <h2 class="serv">About Us</h2>
-    <p>Coming Soon...</p>
-
-    <!-- <div style="display: flex; margin-top: 30px; gap: 30px">
-      <img src="https://example.com/pastor-photo.jpg" alt="Pastor Photo" style="width: 200px; border-radius: 50%" />
-      <div>
-        <h3>Pastor</h3>
-        <p>
-          "We're not just a church - we're a family. Come join us as we grow
-          together in faith and love."
-        </p>
-      </div>
-    </div> -->
-  </section>
-
-  <!-- 3. Services Section -->
-  <section id="services">
-    <h2 class="serv">Our Services</h2>
-    <p>
-      All services are held at 376R+HRH Belen compound, San Pablo City, Laguna
-      Dress comfortably!
-    </p>
-    <p><a href="bst.html">Bible Study of San Pablo Local Church</a>
-      <br>
-      <a href="sun.html">Sunday Teachings of San Pablo Local Church</a>
-      <br>
-      <a href="CYAspc.html">Christian Youth Association of San Pablo Local Church</a>
-      <br>
-      <a href="TBTA.html">Mandatory Solo Tanging Awit and Bilang of San Pablo Local Church</a>
-    </p>
-  </section>
-
-  <!-- Popup Image Modal -->
-  <div id="imgModal" class="modal">
-    <span class="close">&times;</span>
-    <img class="modal-content" id="modalImg" />
-  </div>
-
-  <!-- 4. Photo Gallery -->
-  <section>
-    <h2>Our Community</h2>
-    <div class="gallery">
-      <img src="./assets/inspirational.png" alt="Worship" />
-      <img src="./assets/cya.png" alt="Youth Group" />
-      <img src="./assets/pstr cauguiran.png" alt="Pastor with Congregation" />
-      <img src="./assets/Pastors deacons.png" alt="Deacons and Elders" />
-    </div>
-  </section>
-
-  <!-- 5. Locals -->
-  <section>
-    <h2>Our Locals</h2>
-    <div class="gallery">
-      <a class="lBtn" href="apia.html">
-        Apia Local Church
-        <img src="assets/CCFJNT new.png" alt="Apia Local Church" />
-      </a>
-
-      <a class="lBtn" href="calawis.html">
-        Calawis Local Church
-        <img src="assets/CCFJNT new.png" alt="Calawis Local Church" />
-      </a>
-
-      <a class="lBtn" href="cupang.html">
-        Cupang Local Church
-        <img src="assets/CCFJNT new.png" alt="Cupang Local Church" />
-      </a>
-
-      <a class="lBtn" href="ipo.html">
-        Ipo Local Church
-        <img src="assets/CCFJNT new.png" alt="Ipo Local Church" />
-      </a>
-
-      <a class="lBtn" href="malanday.html">
-        Malanday Local Church
-        <img src="assets/CCFJNT new.png" alt="Malanday Local Church" />
-      </a>
-
-      <a class="lBtn" href="puray.html">
-        Puray Local Church
-        <img src="assets/CCFJNT new.png" alt="Puray Local Church" />
-      </a>
-
-      <a class="lBtn" href="spc.html">
-        San Pablo Local Church
-        <img src="assets/CCFJNT new.png" alt="San Pablo Local Church" />
-      </a>
-
-      <a class="lBtn" href="sanrafael.html">
-        San Rafael Local Church
-        <img src="assets/CCFJNT new.png" alt="San Rafael Local Church" />
-      </a>
-    </div>
-  </section>
-
-  <!-- 6. Location Section -->
-  <section id="location">
-    <h2 class="serv">Visit Us</h2>
-    <p>
-      <strong>Address:</strong> 376R+HRH Belen compound, San Pablo City,
-      Laguna (San Pablo Local Church)
-    </p>
-    <div style="height: 300px">
-      <iframe
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3870.2811561658814!2d121.28871347406995!3d14.060567790072014!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33bd430079ac3101%3A0x820d6212e9de891a!2sChurch%20of%20Christ%20Founded%20In%20Jerusalem%20New%20Testament%20Local%20Of%20San%20Pablo!5e0!3m2!1sen!2sph!4v1763300627298!5m2!1sen!2sph"
-        width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"></iframe>
-    </div>
-    <p><strong>Service Times:</strong> Sunday 09:00 AM | Thursday 5:00 PM</p>
-    <p><br />
-    <div
-      style="height: 500px; background-color: #c9c2c2; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin: auto">
-      <span style="color: #1d1c1c;"><strong>Address:</strong> Marikit St. Nangka Marikina City (Malanday Local
-        Church)</span>
-      </p>
-      <iframe
-        src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2FCCFJNT%2Fposts%2Fpfbid02kWoCZzuQYNh8RZYdcxAaa47yX5cY3CAsCgXFa56oWeXxuwXrSm8eo3v4kauTWPiNl&show_text=true&width=600"
-        width="400" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0"
-        allowfullscreen="true"
-        allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
-      <br>
-    </div>
-  </section>
-
-  <!-- 7. Contact Section -->
-  <section id="contact">
-    <h2 class="serv">Contact Us</h2>
-    <div style="text-align: center; margin-top: 30px">
-      <p>Call us: +63 928 408 8658</p>
-      <p>
-        Follow us on
-        <a href="https://www.facebook.com/CCFJNT">CCFJNT Facebook Official Page</a>
-        <br />
-        <a href="https://www.facebook.com/profile.php?id=61555122296163">CCFJNT Facebook of San Pablo Local</a>
-        <br />
-        <a href="http://facebook.com/groups/159279404214927/user/100074538504936">CCFJNT Facebook of Ipo local</a>
-        <br />
-        <a href="https://www.facebook.com/groups/155999007822529">CCFJNT Malanday Official Facebook Group</a>
-        <br />
-        <a href="https://www.facebook.com/profile.php?id=61570964192027">CCFJNT San Rafael Official Facebook Page</a>
-        <br />
-        <a href="https://www.facebook.com/profile.php?id=61583146117642">CCFJNT Calawis Official Facebook Page</a>
-      </p>
-    </div>
-  </section>
-  <!-- visitor count section -->
-  <section id="visitorcount">
-    <div class="card">
-      <!-- <a href='https://www.counters-free.net/'>free Counters</a> -->
-      <script type='text/javascript'
-        src='https://www.freevisitorcounters.com/auth.php?id=c7c9f9576f9c2962600bb23ba55ec3e832b41268'></script>
-      <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/1524489/t/0"></script>
-    </div>
-  </section>
-
-  <!-- Bible Verse of the Week -->
-  <div class="bible-verse">
-    <h3>Bible Verse of the Week</h3>
-    <p>
-      "5. Tumiwala ka sa Panginoon ng buong puso mo, at huwag kang manalig sa
-      iyong sariling kaunawaan: 6. Kilalanin mo siya sa lahat ng iyong mga
-      lakad, at kaniyang ituturo ang iyong mga landas." - Kawikaan 3:5-6
-    </p>
-  </div>
-  <footer>
-    <!-- Development since 2023 -->
-    <p>
-      &copy; 2026 Church of Christ Founded in Jerusalem | All Rights Reserved
-      <!-- | <a href="fea2127.github.io">Alfea</a> -->
-    </p>
-  </footer>
-
-  <!-- Three.js -->
-  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
-  <script>
-    // Image Popup Script
-    const modal = document.getElementById("imgModal");
-    const modalImg = document.getElementById("modalImg");
-    const closeBtn = document.querySelector(".modal .close");
-
-    // Select all gallery images
-    document.querySelectorAll(".gallery img").forEach((img) => {
-      img.addEventListener("click", () => {
-        modal.style.display = "flex";
-        modalImg.src = img.src;
-      });
-    });
-
-    // Close modal
-    closeBtn.onclick = () => (modal.style.display = "none");
-    modal.onclick = (e) => {
-      if (e.target === modal) modal.style.display = "none";
-    };
-  </script>
-  <script>
-    // Scene Setup
-    const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(
-      75,
-      window.innerWidth / window.innerHeight,
-      0.1,
-      1000,
-    );
-    const renderer = new THREE.WebGLRenderer({
-      canvas: document.getElementById("bg-animation"),
-      antialias: true,
-    });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-
-    // Particle layers
-    function createParticles(count, color, size, opacity) {
-      const geo = new THREE.BufferGeometry();
-      const pos = [];
-      for (let i = 0; i < count; i++) {
-        pos.push((Math.random() - 0.5) * 100);
-        pos.push((Math.random() - 0.5) * 100);
-        pos.push((Math.random() - 0.5) * 100);
-      }
-      geo.setAttribute("position", new THREE.Float32BufferAttribute(pos, 3));
-      const mat = new THREE.PointsMaterial({
-        color,
-        size,
-        transparent: true,
-        opacity,
-      });
-      return new THREE.Points(geo, mat);
-    }
-
-    const smallPoints = createParticles(1200, 0xd7bb5e, 0.05, 0.9); // gold
-    const largePoints = createParticles(200, 0xffffff, 0.2, 0.3); // white glow
-    scene.add(smallPoints);
-    scene.add(largePoints);
-
-    camera.position.z = 10;
-
-    // Mouse interaction
-    let mouseX = 0,
-      mouseY = 0;
-    document.addEventListener("mousemove", (e) => {
-      mouseX = (e.clientX / window.innerWidth - 0.5) * 2;
-      mouseY = -(e.clientY / window.innerHeight - 0.5) * 2;
-    });
-
-    // Animate
-    function animate() {
-      requestAnimationFrame(animate);
-
-      smallPoints.rotation.y += 0.0008;
-      smallPoints.rotation.x += 0.0003;
-
-      largePoints.rotation.y -= 0.0005;
-
-      // Parallax shift
-      scene.rotation.y = mouseX * 0.1;
-      scene.rotation.x = mouseY * 0.1;
-
-      renderer.render(scene, camera);
-    }
-    animate();
-
-    // Resize
-    window.addEventListener("resize", () => {
-      camera.aspect = window.innerWidth / window.innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(window.innerWidth, window.innerHeight);
-    });
-  </script>
 </body>
-
 </html>
